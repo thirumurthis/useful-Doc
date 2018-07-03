@@ -1,0 +1,168 @@
+To clone the branch directly from the remote Gitlab
+
+    $ git clone -b <branch_name> <url_name>
+
+To use bash difference tool of git, which will eventually open vim
+
+    $ git difftool
+
+To use bash merge tool of git
+
+    $ git mergetool
+
+To configure difftool to the git
+
+    $ git config --global diff.tool bc3
+    $ git config --global difftool.bc3.path "c:/Program Files/Beyond Compare 4/BComp.exe"
+
+To unset the difftool to default configuration
+
+    $ git config --global --difftool --unset
+    
+Fetch the data from remote 
+    $ git fetch [remote-name]
+       - this command goes out to that remote project and pulls down all the data from that remote project, that you don't have yet.
+       - after you do this, you should have refrences to all the branches from that remote, which you can merge in or inspect at any time.
+       
+       - if you clone a repository, the command automatically adds that remote repository unders the name "origin".
+       
+       $ git fetch origin => fetches any new work from that has been pused to that server since you cloned (or last fetched).
+       
+       - git fetch command will ONLY downloads the data to your local repository - it doesn't automatically merge it with any of your work.
+       
+       if your current branch is set up to track a remote branch, you can use the "git pull" command to automatically fetch and then 
+       merge that remote branch.
+       
+       the "git clone" command automatically sets up your local master branch to track the remote master branch on the server you cloned from.
+       
+    $ git push [remote-name] [branch-name]
+        - when you have your project at a point that you want to share, you have to push it upstream.
+        - if you want to push your master branch to your origin server (again, coloning generally sets up both of those names for you automatically.
+          then you can run this to push any commits you've done back up to the server.
+    - This command works only if you cloned from a server to which you have write access and if nobody has pushed in the meantime.
+    Note:
+    if you and someone else clone at the same time and they push upstream and then you sush upstream, your push will rightly be rejected.
+    you will have to fetch their work first and incorporate it into yours before you'will be allowed to push.
+    
+$ git stash 
+    - Assume that you are working in a branch for a CR and made changes to few files. 
+    - The working branch was created from the master or a baselined branch.
+    - There is a bug or issue which needs to worked over the master or baselined branch changes.
+    - In this case no need to revert the changes in the working directory done for the CR.
+    - We can use the stash command.
+    - Before issuing the stash command, check if the changes or newly added file is been tracked by git issuing the "git status" command.
+    - If the files are not tracked, use "git add <file name>" to stage the files.
+    - Once the files are staged, use "git stash" command.
+    - This command will make a reference index to the changed files somewhere, and moved the index to the last commit on the branch.
+    - So in our case, the clean working directory will be referenced.
+    - Use "git status" command to check for the changes.
+    
+$ git stash pop 
+    - (following the git stash command) Once the bug or issue in the branch, use "git stash pop" to retreive the index where the 
+     changes to the CR which you were working will be retrived to your working directory.
+     
+$ git rm -r --cached <file> 
+    - The above command will remove the tracked or unmodified files from the chache to untracked area
+    
+$ git log -p HEAD..FETCH_HEAD
+    - the above command will list the difference between the last HEAD and the latest git fetch origin command execution point header.
+    
+$ git clean -f -n 
+    - the above command will list out the files that will be cleaned the UNTRACKED files from the branch checked out. -n is dry run 
+
+$ git clean -f 
+    - the above command is actual command that will delete the files that are present in UNTRACKED area in that checkedout branch.
+
+-------------------------------------------    
+** TO COPY THE MODIFIED FILES that are listed in GIT status Before commit use the below command **
+
+Create a directory /c/temp/file/to_copy
+
+in git bash
+$ cp $(git ls-files --modified) /c/temp/file/to_copy
+
+$ git ls-files --modified will list all the files that are in unstaged area and modified. 
+Note: If commit is issued, the above command might not work. 
+
+----------------------------------------------
+** TO ADD THE FILES THAT ARE MODIFED or tracked by the git **** 
+
+$ git add -u -n 
+   - the above command will display the details and -n stands for --dry-run equivalent; no action happens when using the above command.
+   
+$ git add -u 
+   - this command will add the tracked and modified files (git status, command output modified to add in the staged area).
+   
+   More:
+$ git add -A stages All
+$ git add . stages new and modified, without deleted
+
+$ git add -u stages modified and deleted, without new
+-------------------------------------------
+
+Git displayed the remote branch which was DELETED.
+
+even when 'git pull' command didn't work. to remove the obsolete branch we need to use below command.
+
+$ git remote prune origin 
+        - origin : is the branch name 
+Same can be done using the below command 
+
+$ git pull -p (this command will prune the remote branch)
+
+But still there was an instance displayed using the below command also didn't solve the issue 
+$ git branch -d -r origin/branch_name
+
+$ git branch -d -r branch_name
+
+used the eclipse git perspective to delete the local tracked branch. 
+
+-----------------------------------------------------
+
+Below command used to untrack the modified files in git (when displayed with the command $ git status)
+GIT to ignore the modified files from being tracked.
+for example, in the .classpath file gets modifed everytime the project is setup.
+
+below command will ignore that file from being tracked.
+
+$ git update-index --assume-unchanged path/to/file
+
+in order to make the branch to re-track the changes use the below command.
+
+$ git update-index --no-assume-unchanged [<file>.... ]
+
+-----------------------------------------------------------
+
+FILTERING FILE WITH EXTENSION USING GIT BASH 
+Git bash command usage in windows to filter file with extension - can be enhanced
+
+$ git status | egrep "*/*[.]html" | wc -l
+-------------------------------
+
+TO MERGE Specific file form another branch command.
+
+git checkout <SOURCE_BRANCH_NAME_WHERE_THE_CHANGED_FILE_EXISTS> <PATH_OF_THE_FILE>
+
+DSSBatch_PI-2_DEV_Offshore_branch was updated with the changes to the DssDBConn.properties
+need to merge this to DSSBatch_PI-2_DEV_Main_branch
+
+eg of commands: 
+1. git checkout DSSBatch_PI-2_DEV_Main_branch
+2. git checkout DSSBatch_PI-2_DEV_Offshore_branch dssBatch/resources/DssDBConn.properties
+
+Merging branches
+1. make sure both the branches are latest from both the branches use git pull checkingout to both the branches.
+2. checkout the branch where you want to merge the other branch. for example if you want to merge a fix branch named prodfix to master.
+checkout master and then issue the merge command as below
+
+git checkout master
+git merge prodfix
+----------------------------------
+
+GIT DIFF after moving the file to add area or staging area (after issuing git add command)
+
+git diff --chached
+
+git diff --staged
+
+--------------------------------------
