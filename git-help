@@ -143,12 +143,12 @@ TO MERGE Specific file form another branch command.
 
 git checkout <SOURCE_BRANCH_NAME_WHERE_THE_CHANGED_FILE_EXISTS> <PATH_OF_THE_FILE>
 
-DSSBatch_PI-2_DEV_Offshore_branch was updated with the changes to the DssDBConn.properties
-need to merge this to DSSBatch_PI-2_DEV_Main_branch
+DBh_2_DEV_Offshore_branch was updated with the changes to the DBConn.properties
+need to merge this to DBh_2_DEV_Main_branch
 
 eg of commands: 
-1. git checkout DSSBatch_PI-2_DEV_Main_branch
-2. git checkout DSSBatch_PI-2_DEV_Offshore_branch dssBatch/resources/DssDBConn.properties
+1. git checkout DBh_2_DEV_Main_branch
+2. git checkout DBh_2_DEV_Off_branch dbh/resources/DBConn.properties
 
 Merging branches
 1. make sure both the branches are latest from both the branches use git pull checkingout to both the branches.
