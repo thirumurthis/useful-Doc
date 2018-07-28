@@ -70,7 +70,9 @@ Reported exception on executing the test cases.
 java.lang.Exception: Method prepObject() should be public
 
 Quizz, what happens when there are two @Test case methods, how will the test case executed. Refer the below code
-<< Note: for each @Test, the @Before and @After is executed when the @Test is invoked.>>
+<< Note: for each @Test, the @Before and @After is executed when the @Test is invoked. Also there is no assurance 
+that testAdd2and3 will execute first.>>
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,4 +108,36 @@ Teardown invoked..
 Setup invoked..
 Running test cases for 10 and 20..
 Teardown invoked..
+------------------------------------------------------------------------------------
+Scenario where we need to initalize the server only once for different test cases
+This can be achived using @BeforeClass and @AfterClass. (executed **only-once**)
+Which means that it will be executed only once even if there are multiple @Test test case methods.
+
+Note: What are Junit Test Suites?
+      If we want to execute multiple tests in a specific order, it can be done by combining all in test suites.
+      
+What is Junit Test Runner? 
+      Junit provides a tool to execute the text cases, JUnitCore class is used to execute these test cases. 
+      runClasses within org.junit.runner.JUnitCore class is used to run multiple classes.
+      Result Object is the return value of JUnitCore.runClasses(xyz.class);
+             The result object holds the failures and success information.
+             result.getFailures(); -> gives the list of Failures
+             result.wasSuccessful(); -> returns a string message
+     Note: If using Java IDE like Eclipse or IntelliJ we can use the inbuilt option to run Junit test cases.
+     
+ Using Assert (org.junit.Assert)
+ 
+1. 	void assertEquals(boolean expected, boolean actual) 	checks whether two values are equals similar to equals method of Object class
+2. 	void assertFalse(boolean condition) 	 check that a condition is false.
+3. 	void assertNotNull(Object object) 	 check that an object is not null.
+4. 	void assertNull(Object object) 	check that an object is null.
+5. 	void assertTrue(boolean condition) 	check that a condition is true.
+6. 	void fail() 	If you want to throw any assertion error, you have fail() that always results in a fail verdict.
+7. 	void assertSame([String message] 	check that the two objects refer to the same object.
+8. 	void assertNotSame([String message] check that the two objects do not refer to the same object. 
+             
+             
+      
+      
+
 
