@@ -7,9 +7,103 @@ Test Fixture:
             setup - allocation
             teardown - deallocation
   
-  Setup: This is achived using @Before annotation of junit. This is used for initializing objects like creating database connection before executing the test case
+  Setup: This is achived using @Before annotation of junit. This is used for initializing objects like 
+         creating database connection before executing the test case
   Teardown: This is achived using @After annotation of junit. This is used to release the resources back. 
             Key point to note is, @After annoation executes even in case of exception or assertion failure.
  
- 
- 
+ Notes: > A testcase class can have any number of @Before and @After, all the method annotated with @Before will execute before the 
+        test case (method), there is no order of execution for it.
+        > @Before and @After methods can be inherited too. The order of execution will be starting from superclass @Before, current
+        class @Before, current calss @Test, current class @After and finally superclass @After.
+        
+  Maven dependency setup
+   <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+/* Class to test */
+
+public class TFixtureClac {
+
+    public int addTwoNumbers(int a, int b){
+        return a+b;
+    }
+}
+
+/*  Test case class */
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+public class TestTFixtureCalc {
+    TFixtureClac tstObj;
+    @Before public void prepObject(){
+        System.out.println("Setup invoked..");
+        tstObj = new TFixtureClac();
+    }
+    @Test public void testAdd (){
+        System.out.println("Running test cases..");
+
+        assertEquals(5,tstObj.addTwoNumbers(2,3));
+    }
+
+    @After public void destroyObj(){
+        System.out.println("Teardown invoked..");
+        tstObj = null;
+    }
+}
+//ouput : 
+Setup invoked..
+Running test cases..
+Teardown invoked..
+
+Note: when each of the methods of Test case class, was not declared with access specifier, which defaulted to protected.
+Reported exception on executing the test cases.
+
+java.lang.Exception: Method prepObject() should be public
+
+Quizz, what happens when there are two @Test case methods, how will the test case executed. Refer the below code
+<< Note: for each @Test, the @Before and @After is executed when the @Test is invoked.>>
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+public class TestTFixtureCalc {
+    TFixtureClac tstObj;
+    @Before public void prepObject(){
+        System.out.println("Setup invoked..");
+        tstObj = new TFixtureClac();
+    }
+    @Test public void testAdd2and3 (){
+        System.out.println("Running test cases for 2 and 3..");
+
+        assertEquals(5,tstObj.addTwoNumbers(2,3));
+    }
+
+    @Test public void testAdd10and20(){
+        System.out.println("Running test cases for 10 and 20..");
+
+        assertEquals(30,tstObj.addTwoNumbers(10,20));
+    }
+
+    @After public void destroyObj(){
+        System.out.println("Teardown invoked..");
+        tstObj = null;
+    }
+}
+//output
+Setup invoked..
+Running test cases for 2 and 3..
+Teardown invoked..
+Setup invoked..
+Running test cases for 10 and 20..
+Teardown invoked..
+
