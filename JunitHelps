@@ -1,0 +1,15 @@
+Junit
+
+Test Fixture:
+      Test Fixture are context for running Test cases. 
+      This typically includes, the resources/object available for testing the test cases.
+      Also availability of those resources, referred as 
+            setup - allocation
+            teardown - deallocation
+  
+  Setup: This is achived using @Before annotation of junit. This is used for initializing objects like creating database connection before executing the test case
+  Teardown: This is achived using @After annotation of junit. This is used to release the resources back. 
+            Key point to note is, @After annoation executes even in case of exception or assertion failure.
+ 
+ 
+ 
