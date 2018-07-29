@@ -10,3 +10,16 @@
  public void resultDiv(){
     assertEquals(1,tstObject.calcDive(1,0));
  }
+
+------------------------------------------------------------
+
+@Rule => Error Collector
+When there are some exception during the execution of test case there might be interaption 
+and the process might have stopped.
+
+Collect the exception and display at the end of the execution.
+
+@Rule annotation which used to create an object of ErrorCollector.
+and use addError(Throwable error).
+
+In case of using simple assert or try/catch block, using error collector won't be possible.
