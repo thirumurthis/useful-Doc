@@ -23,3 +23,42 @@ Collect the exception and display at the end of the execution.
 and use addError(Throwable error).
 
 In case of using simple assert or try/catch block, using error collector won't be possible.
+
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ErrorCollector;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
+public class ErrorCollectorExample {
+    @Rule
+    public ErrorCollector collect = new ErrorCollector();
+
+    @Test
+    public void testTStringreturn() {
+        collect.addError(new Throwable("1st line - This is an error.."));
+        assertEquals("Hello ", (new TStringClass()).returnit("Hello "));
+        collect.addError(new Throwable("3rd line - this is not expected"));
+        System.out.println("Hellooooo");
+        try {
+            Assert.assertTrue("1 "=="2");
+        }catch(Throwable error){
+            collect.addError(error);
+        }
+    }
+    @Test(expected=ArithmeticException.class)
+    public void testTFixtureDiv(){
+        TFixtureClac calc= new TFixtureClac();
+        assertEquals(1,calc.divideTwoNumbers(1,0));
+    }
+}
+
+   When running the class using TestRunner it will run succcessful.
+   
+There are several built-in rules provided by Junitapi that can be used.
+A own rule can also be written.
+
+Test continuity and recovery handling is crucial to est automation success. 
+Error collector is the best way to handle it.
+
