@@ -1,0 +1,12 @@
+@Test(expected=IllegalArithmeticException.class)
+ => this is used to validate if the method returns successfully if the method thorws
+ exception.
+ => Expected is optional
+ => trace the informaion using fail()
+ 
+ Note 
+ 
+ @Test(expected=IllegalArithimeticException.class)
+ public void resultDiv(){
+    assertEquals(1,tstObject.calcDive(1,0));
+ }
