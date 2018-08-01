@@ -62,3 +62,62 @@ A own rule can also be written.
 Test continuity and recovery handling is crucial to est automation success. 
 Error collector is the best way to handle it.
 
+--------------------------------------------------
+@Parameters => Junit Parameterized Test with @Parameters
+
+This are used to execute the same test over and over again, usign different values.
+Using parameterized test, one can setup a test method that retrieves data from some
+data source.
+
+@Test public void testArithematicAdd(){
+ assertEquals("10+15 = 25",25,airthmatic.sum(10,15));
+ assertEquals("10+25 = 35",25,airthmatic.sum(10,25));
+ assertEquals("10+35 = 45",25,airthmatic.sum(10,35));
+ }
+ 
+Steps To follow
+use @RunWith(Parameterized.class) // Parameterized class with the parameter
+//values to be used for testng the test case over and over with different values
+
+@RunWith(Parameterized.class) //Parameterized.class is Runner class name
+public class ArithmeticAddTest{
+ private int a;
+ private int b;
+ private int expectedres;
+ private ArithementAdd arithematicAdd; // class that needs to be tested.
+ 
+ //Note:@RunWith is not specified with any value, BlockJunit3ClassRunner will be considered
+ //by default.
+ 
+ //This class is resoponsible for test to run with a new test instance and invoking lofecyvle
+ //methods like setup and teardown.
+ 
+ //create constructor 
+ public ArithematicAdd(int a, int b, int expectedres){
+ super();
+ this.a=a; this.b=b; this.expectedres = expectedres;
+ }
+ 
+ // static method to return test data
+ 
+ @Parametrized.Parameters //used to create set of input data to run test
+ public static Collection input(){
+    return Arrays.asList(new Object[][]{{1,2,3},{11,22,33},{111,222,333}});
+    }
+//Note: static method identified by @Parameters annotation returns a Collection where
+each entry in the Collection will be the input data for one iteration.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
