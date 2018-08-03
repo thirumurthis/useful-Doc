@@ -28,3 +28,10 @@ the platform takes care of the versioning of the dependencies.
         version info comes from the dependency management; added by platform bom -->
      <dependency>
  </dependecies>
+ 
+ ---------
+ APPLICATION CONTEXT: (class path , Annotation bases context)
+ 
+ Web container always has multiple context
+   Parent context can interact with the child not the other way round.
+   
