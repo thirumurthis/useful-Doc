@@ -1,0 +1,30 @@
+Pom for sample startup program.
+
+create a maven project,
+
+in the pom.xml, we will be adding the platform bom for us
+bringing the spring dependency
+
+Dependency manangement, we will add the platform io.spring.platform group
+Brussels-Sr3 version, below is how the pom file looks.
+the platform takes care of the versioning of the dependencies.
+
+<dependencyManagement> 
+    <dependencies>
+      <dependency>  
+          <groupId>io.spring.platform</groupId>
+          <artifcatid>platform-bom</artifactid>
+          <version>Brussels-SR2</version>
+          <type>pom</type> <!-- Treats the platform as pom-->
+          <scope>import</scope> <!-- making sure it is import only -->
+      </dependency>    
+    </dependencies>
+ </dependencyManagement> 
+ 
+ <dependencies>
+    <dependency>
+        <groupId>org.springframework</grouptId>
+        <artifactId>spring-core</artifactId> <!-- note there is no version tag, this 
+        version info comes from the dependency management; added by platform bom -->
+     <dependency>
+ </dependecies>
