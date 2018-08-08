@@ -1,0 +1,23 @@
+To open multiple files in Vi and navigate between them
+
+$ vi file1.txt file2.txt
+
+using :n -> moves forward to next file
+using :N -> moves backward to previous file
+using :rew -> moves to the first file (rewinds)
+using cntr + g => prints the cursor position and the line number at the bottom with file name
+
+using :w file2.txt (if the file is edited and wanted to save the edited content to 
+another file, issue a :w with_file_name)
+
+
+using h j k l => key will move cursor left up down right accordingly.
+in command mode pressing number + h/j/k/l key will move the cursor to that many lines or 
+char.
+
+using - will take to the begining of previous line.
+space will move to next char.
+backspace will move backward
+to go to end of the line with line with 10 chars simply issue 100 + l
+
+Text utlitly
