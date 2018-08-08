@@ -20,4 +20,15 @@ space will move to next char.
 backspace will move backward
 to go to end of the line with line with 10 chars simply issue 100 + l
 
-Text utlitly
+    Text utlitly
+moving word by word
+
+w- begining of the next word
+b- backward of the word (Begining)
+e - moves to the end of the current word (End)
+
+) -moves forward begining of current sentence
+( -moves backward a sentence
+} - forward a paragraph
+{ - backward a paragraph
+
