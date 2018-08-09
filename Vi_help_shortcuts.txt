@@ -32,3 +32,15 @@ e - moves to the end of the current word (End)
 } - forward a paragraph
 { - backward a paragraph
 
+Move by line 
+
+^ - begining of the line 
+$ - end of the line 
+
+1G - first line of file
+G last line of file
+nG -nth line 
+% - Matching parenthisis / braceket
+
+cntrl + g => gives line number and file status
+
