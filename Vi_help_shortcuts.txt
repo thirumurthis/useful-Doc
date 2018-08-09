@@ -44,3 +44,24 @@ nG -nth line
 
 cntrl + g => gives line number and file status
 
+cntrl + e : scroll down by line in case of a bigger file.
+cntrl + y : scroll up by line 
+cntrl + D : go down by half way to the screen
+cntrl + U : go up by half way to the screen
+cntrl + F : forward by full screen full
+
+i - insert before cursor ( begining of the word sort of)
+I - insert at begining of line
+
+a - append after cursor (end of the word where the cursor was)
+A - append at end of line
+
+o - open a new line below
+O - open a new line above
+
+
+
+
+
+
+
