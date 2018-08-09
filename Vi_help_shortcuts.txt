@@ -50,6 +50,7 @@ cntrl + D : go down by half way to the screen
 cntrl + U : go up by half way to the screen
 cntrl + F : forward by full screen full
 
+insert:
 i - insert before cursor ( begining of the word sort of)
 I - insert at begining of line
 
@@ -59,7 +60,34 @@ A - append at end of line
 o - open a new line below
 O - open a new line above
 
+Delete:
+x - deletes the carachter at cursor
+dd - deletes the line
+dw - deletes current word
+de - deletes till end of word along with the space
+d^ - delete to begining of line
+d$ - delete to end of line 
+dx (x - any movement command) - h/j/k/l
+eg: 5dd - deletes 5 lines
+5dw 5 word
 
+Change test
+
+r - r + * (* any character replaces the current char, and leaves in command mode)
+s - replaces and leaves in insert mode
+
+cc - changes currentline -> deletes the current line
+cw - changes current word (till end ) = ce
+c^ - begning 
+c$ - end
+number followed by c
+
+overwrite
+
+R - enters overwrite mode
+~ - changes upper case to lower case -
+J - joins the next line 
+number with above command.
 
 
 
