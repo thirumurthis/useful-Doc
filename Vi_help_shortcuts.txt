@@ -89,6 +89,11 @@ R - enters overwrite mode
 J - joins the next line 
 number with above command.
 
+u - undoes last changes in command mode
+cntrl + r - redoes last change
+U - undoes all changes to current line
+. - repeasts last change in the current cursor location
+
 
 
 
