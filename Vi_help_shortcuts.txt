@@ -94,7 +94,43 @@ cntrl + r - redoes last change
 U - undoes all changes to current line
 . - repeasts last change in the current cursor location (last action that was performed)
 
+dd - cuts the line but also copies it to clipboard of that vi
+yy - copy the line - note not delete
 
+y{ = copy para
+
+dx = delete an amount/cut
+yx = copy an amount
+P = paste before cursor
+p = paste after cursor
+
+
+Search command:
+
+/text = will search forward for text
+?text = searchs backward for text
+n = next search forward
+N = next serach backward
+
+regular expression search:
+
+/a.c => means abc, acc, etc
+/a\.c => actually escapes . property searches for a.c
+/a\\c => searches for a\c
+/a\/c => seraches for a/c 
+
+meta chars:
+^ = /^abc -> matches line that starts with abc
+$ = /$abc -> matches abc that ending
+[] = single character matching any eg: /a[xYz]c matches axc,a[a-zA-z]
+eg: /a[^a-z]c - ^ negates the operation here include only A-Z
+
+/ab*c = matches abc, aaac,abbbbc
+/\(ab\)*c => matches any number of repeats of ababababc
+
+/<.*> matches <html>test</html><body></body> this matches all the html tag
+/<[^>]*> = matches only first <html>test</html> 
+(test ()) => to match only () then use /([^(]*)
 
 
 
