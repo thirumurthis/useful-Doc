@@ -92,7 +92,9 @@ number with above command.
 u - undoes last changes in command mode
 cntrl + r - redoes last change
 U - undoes all changes to current line
-. - repeasts last change in the current cursor location
+. - repeasts last change in the current cursor location (last action that was performed)
+
+
 
 
 
