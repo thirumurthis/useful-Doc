@@ -125,7 +125,7 @@ $ = /$abc -> matches abc that ending
 [] = single character matching any eg: /a[xYz]c matches axc,a[a-zA-z]
 eg: /a[^a-z]c - ^ negates the operation here include only A-Z
 
-/ab*c = matches abc, aaac,abbbbc
+/ab*c = matches abc, abbc,abbbbc
 /\(ab\)*c => matches any number of repeats of ababababc
 
 /<.*> matches <html>test</html><body></body> this matches all the html tag
@@ -133,6 +133,48 @@ eg: /a[^a-z]c - ^ negates the operation here include only A-Z
 (test ()) => to match only () then use /([^(]*)
 
 
+Search and replace
 
+:s/ old / new /  => replaces FIRST old with new on CURRENT line
+:s/ old / new /g => replaces EVERY old with new on CURRENT line
+:%s/old / new / => replaces first old with new on every line 
+:%s/old / new /g => replaces all the occurance in all the line, old with new on every line 
 
+/ - in the search can be any character ( like ; or / ) :s;old;new
+ old = string is a regular expression or string itself.
+ new - is a string not regular expression, with new if we use & is replaced with the matching old regular expression
+ grouping:
+ \n (n is number) replaces that n times.
+ 
+ :%s/the[ym]/(&)/g = > if there was they then it will be replaced as (they); them => (them)
+ :%s/\(they\) \(were\)/\2 \1/
+ => means search for they and replace it with were
+ 
+ Indenting, auto indent, word wrap:
+ 
+ >> indent currentline
+ << outdents currentline
+ 
+ n+>> or n+<<
+ auto indent
+ :se ai enables auto-indent
+ :se noai disable auto-indent
+ 
+ :se wm=8 => sets wrap margin :se wm=0 disables it. (8 is the number of character from right margin)
+ (refer docs)
+ in order to preload this values, use .exrc or .vimrc -> create these file in cd ~/ (home directory)
+ 
+ Filtering .
+ !! - takes the text from current buffer line as shell com
+ fmt,tr, grep,sed and awk => commands for filter
+ 
+  !! -> directly directs to text to a command
+  :.!tr a-z A-z =>for making all the line to upper case.
+ 
+ 
+ 
+
+ 
+
+ 
 
